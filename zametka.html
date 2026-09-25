@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Zametkalar</title>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+    <h1>Mening Zametkalarim</h1>
+    <p>Kerakli yozuvlar va eslatmalar</p>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="kundalik.html">Kundalik</a>
+        <a href="zametka.html">Zametkalar</a>
+        <a href="vazifalar.html">Vazifalar</a>
+        <a href="maqsadlar.html">Maqsadlar</a>
+        <a href="vaqt.html">Vaqt</a>
+        <a href="saytlar.html">Foydali saytlar</a>
+    </nav>
+</header>
+
+    <input id="title" type="text" placeholder="Zametka nomi">
+    
+    <br><br>
+
+    <textarea id="note" rows="8" cols="50"
+        placeholder="Zametkangizni yozing..."></textarea>
+
+    <br><br>
+
+    <button onclick="saveNote()"> Saqlash</button>
+
+    <hr>
+
+    <h2> Saqlangan zametkalar</h2>
+
+    <div id="notes"></div>
+
+    <br>
+
+    <a href="index.html"> Bosh sahifaga qaytish</a>
+
+    <script>
+
+        let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+        function saveNote() {
+
+            const title = document.getElementById("title").value;
+            const text = document.getElementById("note").value;
+
+            if (title === "" || text === "") {
+                alert("Iltimos, nom va matnni kiriting!");
+                return;
+            }
+
+            notes.push({
+                title: title,
+                text: text
+            });
+
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            document.getElementById("title").value = "";
+            document.getElementById("note").value = "";
+
+            showNotes();
+        }
+
+        function deleteNote(index) {
+
+            notes.splice(index, 1);
+
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            showNotes();
+        }
+
+        function showNotes() {
+
+            const notesDiv = document.getElementById("notes");
+
+            notesDiv.innerHTML = "";
+
+            notes.forEach((note, index) => {
+
+                notesDiv.innerHTML += `
+                    <h3> ${note.title}</h3>
+                    <p>${note.text}</p>
+                    <button onclick="deleteNote(${index})">
+                         O'chirish
+                    </button>
+                    <hr>
+                `;
+
+            });
+        }
+
+        showNotes();
+
+    </script>
+
+</body>
+</html>

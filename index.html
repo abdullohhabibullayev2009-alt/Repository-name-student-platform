@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abdulloh - Student Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* Avatar */
+
+        .profile-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #1e40af
+            );
+
+            border: 4px solid #60a5fa;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            box-shadow:
+                0 8px 25px
+                rgba(37, 99, 235, 0.35);
+        }
+
+        .avatar-head {
+            width: 42px;
+            height: 42px;
+
+            background: #e5e7eb;
+
+            border-radius: 50%;
+
+            position: absolute;
+            top: 22px;
+        }
+
+        .avatar-body {
+            width: 72px;
+            height: 42px;
+
+            background: #e5e7eb;
+
+            border-radius:
+                45px 45px 25px 25px;
+
+            position: absolute;
+            bottom: 17px;
+        }
+
+        .avatar-letter {
+            position: absolute;
+
+            bottom: -3px;
+            right: -3px;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: #111827;
+
+            border: 3px solid #60a5fa;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+
+        /* Logout tugmasi */
+
+        .logout-button {
+            background: #dc2626;
+            margin-top: 15px;
+        }
+
+        .logout-button:hover {
+            background: #b91c1c;
+        }
+
+
+        /* Dars */
+
+        .lesson-box {
+            background-color: #181b21;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #292d36;
+            margin-bottom: 20px;
+        }
+
+        .lesson-status {
+            display: inline-block;
+
+            background-color: #172554;
+            color: #60a5fa;
+
+            padding: 8px 12px;
+
+            border-radius: 8px;
+
+            margin-bottom: 10px;
+        }
+
+        .countdown {
+            color: #60a5fa;
+
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+
+        /* Statistika */
+
+        .statistics {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background-color: #181b21;
+
+            border: 1px solid #292d36;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #60a5fa;
+        }
+
+
+        /* Progress */
+
+        .progress-box {
+            background-color: #111318;
+
+            height: 12px;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+
+            background-color: #2563eb;
+
+            width: 0%;
+        }
+
+
+        /* Home item */
+
+        .home-item {
+            background-color: #181b21;
+
+            border: 1px solid #292d36;
+
+            border-radius: 10px;
+
+            padding: 14px;
+
+            margin-bottom: 10px;
+
+            color: #e5e7eb;
+        }
+
+        .home-item strong {
+            color: #60a5fa;
+        }
+
+
+        /* Telefon */
+
+        @media (max-width: 600px) {
+
+            .statistics {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-avatar {
+                width: 115px;
+                height: 115px;
+            }
+
+            .avatar-head {
+                width: 38px;
+                height: 38px;
+
+                top: 20px;
+            }
+
+            .avatar-body {
+                width: 64px;
+                height: 38px;
+
+                bottom: 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>Abdulloh's Student Platform</h1>
+
+    <p>My personal study space</p>
+
+
+    <nav>
+
+        <a href="index.html">
+            Bosh sahifa
+        </a>
+
+        <a href="kundalik.html">
+            Kundalik
+        </a>
+
+        <a href="zametka.html">
+            Zametkalar
+        </a>
+
+        <a href="vazifalar.html">
+            Vazifalar
+        </a>
+
+        <a href="maqsadlar.html">
+            Maqsadlar
+        </a>
+
+        <a href="vaqt.html">
+            Vaqt
+        </a>
+
+        <a href="saytlar.html">
+            Foydali saytlar
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <!-- PROFIL -->
+
+    <div class="card profile">
+
+
+        <div class="profile-avatar">
+
+            <div class="avatar-head"></div>
+
+            <div class="avatar-body"></div>
+
+            <div class="avatar-letter">
+                A
+            </div>
+
+        </div>
+
+
+        <h2>
+            Abdulloh
+        </h2>
+
+
+        <p>
+            11-sinf o'quvchisi
+        </p>
+
+
+        <p>
+            Bu mening shaxsiy o'quv platformam.
+            Bu yerda darslarim, vazifalarim,
+            maqsadlarim va zametkalarimni
+            boshqaraman.
+        </p>
+
+
+        <button
+            class="logout-button"
+            onclick="logout()"
+        >
+            Chiqish
+        </button>
+
+
+    </div>
+
+
+
+    <!-- BUGUNGI DARS -->
+
+    <div class="lesson-box">
+
+        <h2>
+            Bugungi dars
+        </h2>
+
+
+        <div
+            id="lessonStatus"
+            class="lesson-status"
+        >
+            Yuklanmoqda...
+        </div>
+
+
+        <h3 id="lessonName">
+            -
+        </h3>
+
+
+        <p id="lessonTime">
+            -
+        </p>
+
+
+        <div
+            class="countdown"
+            id="countdown"
+        >
+            00:00:00
+        </div>
+
+    </div>
+
+
+
+    <!-- STATISTIKA -->
+
+    <div class="statistics">
+
+
+        <div class="stat-card">
+
+            <div>
+                Jami vazifalar
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalTasks"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div>
+                Bajarilgan
+            </div>
+
+            <div
+                class="stat-number"
+                id="completedTasks"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div>
+                Bajarilmagan
+            </div>
+
+            <div
+                class="stat-number"
+                id="unfinishedTasks"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div>
+                Jami maqsadlar
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalGoals"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div>
+                Bajarilgan maqsadlar
+            </div>
+
+            <div
+                class="stat-number"
+                id="completedGoals"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div>
+                O'rtacha progress
+            </div>
+
+            <div
+                class="stat-number"
+                id="averageProgress"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- BAJARILMAGAN ISHLAR -->
+
+    <div class="card">
+
+        <h2>
+            Bajarilmagan ishlar
+        </h2>
+
+
+        <div id="unfinishedList">
+
+            Hozircha bajarilmagan
+            vazifalar yo'q.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MAQSADLAR -->
+
+    <div class="card">
+
+        <h2>
+            Maqsadlar
+        </h2>
+
+
+        <div id="goalsList">
+
+            Hozircha maqsadlar yo'q.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MENU -->
+
+    <div class="menu">
+
+
+        <a
+            href="kundalik.html"
+            class="menu-card"
+        >
+
+            <h3>
+                Kundalik
+            </h3>
+
+            <p>
+                Dars jadvali va bugungi
+                darslarni ko'rish.
+            </p>
+
+        </a>
+
+
+
+        <a
+            href="zametka.html"
+            class="menu-card"
+        >
+
+            <h3>
+                Zametkalar
+            </h3>
+
+            <p>
+                Kerakli ma'lumotlarni
+                yozish va saqlash.
+            </p>
+
+        </a>
+
+
+
+        <a
+            href="vazifalar.html"
+            class="menu-card"
+        >
+
+            <h3>
+                Vazifalar
+            </h3>
+
+            <p>
+                Uy vazifalarini yozish
+                va nazorat qilish.
+            </p>
+
+        </a>
+
+
+
+        <a
+            href="maqsadlar.html"
+            class="menu-card"
+        >
+
+            <h3>
+                Maqsadlar
+            </h3>
+
+            <p>
+                Maqsadlarni belgilash
+                va progressni kuzatish.
+            </p>
+
+        </a>
+
+
+
+        <a
+            href="vaqt.html"
+            class="menu-card"
+        >
+
+            <h3>
+                Vaqt statistikasi
+            </h3>
+
+            <p>
+                Saytda qancha vaqt
+                o'tkazganingni ko'rish.
+            </p>
+
+        </a>
+
+
+
+        <a
+            href="saytlar.html"
+            class="menu-card"
+        >
+
+            <h3>
+                Foydali saytlar
+            </h3>
+
+            <p>
+                Kerakli ta'lim saytlariga
+                tez o'tish.
+            </p>
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   LOGIN TEKSHIRISH
+========================= */
+
+
+if (
+    localStorage.getItem("loggedIn")
+    !== "true"
+) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =========================
+   CHIQISH
+========================= */
+
+
+function logout() {
+
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =========================
+   DARS JADVALI
+========================= */
+
+
+const schedule = {
+
+
+    1: [
+
+        ["Sinf soati", "08:00", "08:45"],
+
+        ["Informatika", "08:50", "09:35"],
+
+        ["Algebra", "09:40", "10:25"],
+
+        ["Ona tili", "10:35", "11:20"],
+
+        ["Fizika", "11:25", "12:10"]
+
+    ],
+
+
+    2: [
+
+        ["Kimyo", "08:00", "08:45"],
+
+        ["Algebra", "08:50", "09:35"],
+
+        [
+            "O'zbekiston tarixi",
+            "09:40",
+            "10:25"
+        ],
+
+        [
+            "Davlat va huquq",
+            "10:35",
+            "11:20"
+        ],
+
+        ["CHQBT", "11:25", "12:10"],
+
+        ["Biologiya", "12:15", "13:00"]
+
+    ],
+
+
+    3: [
+
+        ["Geometriya", "08:00", "08:45"],
+
+        ["Rus tili", "08:50", "09:35"],
+
+        ["Tarbiya", "09:40", "10:25"],
+
+        ["CHQBT", "10:35", "11:20"],
+
+        [
+            "Fransuz tili",
+            "11:25",
+            "12:10"
+        ],
+
+        ["Adabiyot", "12:15", "13:00"]
+
+    ],
+
+
+    4: [
+
+        ["Rus tili", "08:00", "08:45"],
+
+        [
+            "Jahon tarixi",
+            "08:50",
+            "09:35"
+        ],
+
+        ["Adabiyot", "09:40", "10:25"],
+
+        ["Biologiya", "10:35", "11:20"],
+
+        [
+            "Jismoniy tarbiya",
+            "11:25",
+            "12:10"
+        ]
+
+    ],
+
+
+    5: [
+
+        ["Kimyo", "08:00", "08:45"],
+
+        ["Algebra", "08:50", "09:35"],
+
+        [
+            "Informatika",
+            "09:40",
+            "10:25"
+        ],
+
+        [
+            "Astronomiya",
+            "10:35",
+            "11:20"
+        ],
+
+        [
+            "Geometriya",
+            "11:25",
+            "12:10"
+        ],
+
+        [
+            "Tadbirkorlik asoslari",
+            "12:15",
+            "13:00"
+        ]
+
+    ],
+
+
+    6: [
+
+        ["Fizika", "08:00", "08:45"],
+
+        ["Ona tili", "08:50", "09:35"],
+
+        [
+            "Fransuz tili",
+            "09:40",
+            "10:25"
+        ],
+
+        [
+            "Jismoniy tarbiya",
+            "10:35",
+            "11:20"
+        ]
+
+    ]
+
+};
+
+
+
+/* =========================
+   VAQTNI MINUTGA O'GIRISH
+========================= */
+
+
+function timeToMinutes(time) {
+
+    const parts =
+        time.split(":");
+
+    return (
+        Number(parts[0]) * 60
+        +
+        Number(parts[1])
+    );
+
+}
+
+
+
+/* =========================
+   BUGUNGI DARS
+========================= */
+
+
+function updateLesson() {
+
+
+    const now =
+        new Date();
+
+
+    const day =
+        now.getDay();
+
+
+    const currentMinutes =
+        now.getHours() * 60
+        +
+        now.getMinutes();
+
+
+    const lessons =
+        schedule[day];
+
+
+    const status =
+        document.getElementById(
+            "lessonStatus"
+        );
+
+
+    const name =
+        document.getElementById(
+            "lessonName"
+        );
+
+
+    const time =
+        document.getElementById(
+            "lessonTime"
+        );
+
+
+    const countdown =
+        document.getElementById(
+            "countdown"
+        );
+
+
+    if (!lessons) {
+
+        status.textContent =
+            "Bugun dars yo'q";
+
+        name.textContent =
+            "Dam olish kuni";
+
+        time.textContent = "";
+
+        countdown.textContent = "";
+
+        return;
+
+    }
+
+
+    let currentLesson =
+        null;
+
+
+    let nextLesson =
+        null;
+
+
+    for (
+        let i = 0;
+        i < lessons.length;
+        i++
+    ) {
+
+
+        const lesson =
+            lessons[i];
+
+
+        const start =
+            timeToMinutes(
+                lesson[1]
+            );
+
+
+        const end =
+            timeToMinutes(
+                lesson[2]
+            );
+
+
+        if (
+            currentMinutes >= start &&
+            currentMinutes < end
+        ) {
+
+            currentLesson =
+                lesson;
+
+            break;
+
+        }
+
+
+        if (
+            currentMinutes < start
+        ) {
+
+            nextLesson =
+                lesson;
+
+            break;
+
+        }
+
+    }
+
+
+
+    if (currentLesson) {
+
+
+        status.textContent =
+            "Hozirgi dars";
+
+
+        name.textContent =
+            currentLesson[0];
+
+
+        time.textContent =
+            currentLesson[1]
+            +
+            " - "
+            +
+            currentLesson[2];
+
+
+        const endMinutes =
+            timeToMinutes(
+                currentLesson[2]
+            );
+
+
+        const remaining =
+            endMinutes
+            -
+            currentMinutes;
+
+
+        const hours =
+            Math.floor(
+                remaining / 60
+            );
+
+
+        const minutes =
+            remaining % 60;
+
+
+        countdown.textContent =
+            "Dars tugashiga: "
+            +
+            String(hours)
+                .padStart(2, "0")
+            +
+            ":"
+            +
+            String(minutes)
+                .padStart(2, "0");
+
+
+    }
+
+
+    else if (nextLesson) {
+
+
+        status.textContent =
+            "Keyingi dars";
+
+
+        name.textContent =
+            nextLesson[0];
+
+
+        time.textContent =
+            nextLesson[1]
+            +
+            " - "
+            +
+            nextLesson[2];
+
+
+        const remaining =
+            timeToMinutes(
+                nextLesson[1]
+            )
+            -
+            currentMinutes;
+
+
+        const hours =
+            Math.floor(
+                remaining / 60
+            );
+
+
+        const minutes =
+            remaining % 60;
+
+
+        countdown.textContent =
+            "Dars boshlanishiga: "
+            +
+            String(hours)
+                .padStart(2, "0")
+            +
+            ":"
+            +
+            String(minutes)
+                .padStart(2, "0");
+
+
+    }
+
+
+    else {
+
+
+        status.textContent =
+            "Darslar tugadi";
+
+
+        name.textContent =
+            "Bugungi darslar tugagan.";
+
+
+        time.textContent = "";
+
+
+        countdown.textContent =
+            "";
+
+    }
+
+}
+
+
+
+/* =========================
+   STATISTIKA
+========================= */
+
+
+function updateStatistics() {
+
+
+    const tasks =
+        JSON.parse(
+            localStorage.getItem(
+                "tasks"
+            )
+        ) || [];
+
+
+    const goals =
+        JSON.parse(
+            localStorage.getItem(
+                "goals"
+            )
+        ) || [];
+
+
+    const totalTasks =
+        tasks.length;
+
+
+    const completedTasks =
+        tasks.filter(
+            function(task) {
+
+                return (
+                    task.completed === true
+                );
+
+            }
+        ).length;
+
+
+    const unfinishedTasks =
+        totalTasks
+        -
+        completedTasks;
+
+
+    const totalGoals =
+        goals.length;
+
+
+    const completedGoals =
+        goals.filter(
+            function(goal) {
+
+                return (
+                    Number(
+                        goal.progress
+                    ) >= 100
+                );
+
+            }
+        ).length;
+
+
+    let averageProgress =
+        0;
+
+
+    if (goals.length > 0) {
+
+
+        let totalProgress =
+            0;
+
+
+        goals.forEach(
+            function(goal) {
+
+                totalProgress +=
+                    Number(
+                        goal.progress
+                    ) || 0;
+
+            }
+        );
+
+
+        averageProgress =
+            Math.round(
+                totalProgress /
+                goals.length
+            );
+
+    }
+
+
+
+    document.getElementById(
+        "totalTasks"
+    ).textContent =
+        totalTasks;
+
+
+    document.getElementById(
+        "completedTasks"
+    ).textContent =
+        completedTasks;
+
+
+    document.getElementById(
+        "unfinishedTasks"
+    ).textContent =
+        unfinishedTasks;
+
+
+    document.getElementById(
+        "totalGoals"
+    ).textContent =
+        totalGoals;
+
+
+    document.getElementById(
+        "completedGoals"
+    ).textContent =
+        completedGoals;
+
+
+    document.getElementById(
+        "averageProgress"
+    ).textContent =
+        averageProgress
+        +
+        "%";
+
+
+
+    /* Bajarilmagan vazifalar */
+
+
+    const unfinishedList =
+        document.getElementById(
+            "unfinishedList"
+        );
+
+
+    if (
+        unfinishedTasks === 0
+    ) {
+
+
+        unfinishedList.innerHTML =
+            "Hozircha bajarilmagan vazifalar yo'q.";
+
+
+    }
+
+
+    else {
+
+
+        unfinishedList.innerHTML =
+            "";
+
+
+        tasks.forEach(
+            function(task) {
+
+
+                if (
+                    !task.completed
+                ) {
+
+
+                    const div =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    div.className =
+                        "home-item";
+
+
+                    div.innerHTML =
+                        "<strong>"
+                        +
+                        (
+                            task.subject
+                            ||
+                            "Vazifa"
+                        )
+                        +
+                        "</strong><br>"
+                        +
+                        (
+                            task.text
+                            ||
+                            ""
+                        );
+
+
+                    unfinishedList.appendChild(
+                        div
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* Maqsadlar */
+
+
+    const goalsList =
+        document.getElementById(
+            "goalsList"
+        );
+
+
+    if (
+        goals.length === 0
+    ) {
+
+
+        goalsList.innerHTML =
+            "Hozircha maqsadlar yo'q.";
+
+
+    }
+
+
+    else {
+
+
+        goalsList.innerHTML =
+            "";
+
+
+        goals.forEach(
+            function(goal) {
+
+
+                const progress =
+                    Number(
+                        goal.progress
+                    ) || 0;
+
+
+                const div =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                div.className =
+                    "home-item";
+
+
+                div.innerHTML =
+                    "<strong>"
+                    +
+                    (
+                        goal.text
+                        ||
+                        "Maqsad"
+                    )
+                    +
+                    "</strong><br>"
+                    +
+                    progress
+                    +
+                    "%";
+
+
+                goalsList.appendChild(
+                    div
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   ISHGA TUSHIRISH
+========================= */
+
+
+updateLesson();
+
+updateStatistics();
+
+
+setInterval(
+    function() {
+
+        updateLesson();
+
+        updateStatistics();
+
+    },
+    1000
+);
+
+</script>
+
+</body>
+</html>

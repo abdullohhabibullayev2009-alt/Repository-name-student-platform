@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ro'yxatdan o'tish</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background: #0f1115;
+            color: #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register-box {
+            width: 90%;
+            max-width: 420px;
+
+            background: #181b21;
+
+            border: 1px solid #292d36;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+
+            color: white;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #9ca3af;
+
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+
+            margin-top: 15px;
+            margin-bottom: 6px;
+
+            color: #d1d5db;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            background: #111318;
+
+            color: white;
+
+            border: 1px solid #363b46;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 13px;
+
+            background: #2563eb;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .login-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #60a5fa;
+
+            text-decoration: none;
+        }
+
+        #message {
+            text-align: center;
+
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<div class="register-box">
+
+    <h1>
+        Yangi akkaunt
+    </h1>
+
+    <p class="subtitle">
+        Abdulloh's Student Platform
+    </p>
+
+
+    <label>
+        Ism
+    </label>
+
+    <input
+        type="text"
+        id="name"
+        placeholder="Ismingiz"
+    >
+
+
+    <label>
+        Login
+    </label>
+
+    <input
+        type="text"
+        id="username"
+        placeholder="Login yarating"
+    >
+
+
+    <label>
+        Parol
+    </label>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Parol yarating"
+    >
+
+
+    <label>
+        Parolni takrorlang
+    </label>
+
+    <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Parolni qayta kiriting"
+    >
+
+
+    <button onclick="register()">
+        Ro'yxatdan o'tish
+    </button>
+
+
+    <div id="message"></div>
+
+
+    <a
+        href="login.html"
+        class="login-link"
+    >
+        Akkauntingiz bormi? Kirish
+    </a>
+
+</div>
+
+
+<script>
+
+function register() {
+
+    const name =
+        document.getElementById(
+            "name"
+        ).value.trim();
+
+
+    const username =
+        document.getElementById(
+            "username"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "password"
+        ).value;
+
+
+    const confirmPassword =
+        document.getElementById(
+            "confirmPassword"
+        ).value;
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    if (
+        name === "" ||
+        username === "" ||
+        password === ""
+    ) {
+
+        message.textContent =
+            "Barcha maydonlarni to'ldiring.";
+
+        message.style.color =
+            "#f87171";
+
+        return;
+
+    }
+
+
+    if (
+        password !== confirmPassword
+    ) {
+
+        message.textContent =
+            "Parollar bir xil emas.";
+
+        message.style.color =
+            "#f87171";
+
+        return;
+
+    }
+
+
+    if (password.length < 4) {
+
+        message.textContent =
+            "Parol kamida 4 ta belgidan iborat bo'lsin.";
+
+        message.style.color =
+            "#f87171";
+
+        return;
+
+    }
+
+
+    const user = {
+
+        name: name,
+
+        username: username,
+
+        password: password
+
+    };
+
+
+    localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+    );
+
+
+    message.textContent =
+        "Akkaunt yaratildi!";
+
+    message.style.color =
+        "#4ade80";
+
+
+    setTimeout(
+        function() {
+
+            window.location.href =
+                "login.html";
+
+        },
+        1000
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kundalik</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .today-box {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .current-box {
+            background-color: #e8f0fe;
+            padding: 18px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .current-box h2 {
+            margin-top: 0;
+        }
+
+        .countdown {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .today-lesson {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .today-lesson:last-child {
+            border-bottom: none;
+        }
+
+        .schedule {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        .schedule th,
+        .schedule td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .schedule th {
+            background-color: #222;
+            color: white;
+        }
+
+        .schedule tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .day {
+            font-weight: bold;
+        }
+
+        .today-row {
+            background-color: #e8f0fe;
+        }
+
+        @media (max-width: 600px) {
+
+            .schedule {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                font-size: 13px;
+            }
+
+            .schedule th,
+            .schedule td {
+                padding: 8px 4px;
+            }
+
+            .today-box {
+                padding: 15px;
+            }
+
+            .countdown {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>Mening Kundaligim</h1>
+
+    <p>11-sinf o'quvchisi uchun shaxsiy platforma</p>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="kundalik.html">Kundalik</a>
+        <a href="zametka.html">Zametkalar</a>
+        <a href="vazifalar.html">Vazifalar</a>
+        <a href="maqsadlar.html">Maqsadlar</a>
+        <a href="vaqt.html">Vaqt</a>
+        <a href="saytlar.html">Foydali saytlar</a>
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="today-box">
+
+        <div id="currentLesson" class="current-box">
+            <h2>Tekshirilmoqda...</h2>
+        </div>
+
+        <h2 id="todayTitle">Bugungi darslar</h2>
+
+        <div id="todayLessons"></div>
+
+    </div>
+
+
+    <h2>Haftalik dars jadvali</h2>
+
+
+    <div class="card">
+
+        <table class="schedule">
+
+            <tr>
+                <th>Kun</th>
+                <th>Dars</th>
+                <th>Fan</th>
+                <th>Boshlanish</th>
+                <th>Tugash</th>
+            </tr>
+
+
+            <!-- Dushanba -->
+
+            <tr data-day="1">
+                <td class="day" rowspan="5">Dushanba</td>
+                <td>1-dars</td>
+                <td>Sinf soati</td>
+                <td>08:00</td>
+                <td>08:45</td>
+            </tr>
+
+            <tr data-day="1">
+                <td>2-dars</td>
+                <td>Informatika</td>
+                <td>08:50</td>
+                <td>09:35</td>
+            </tr>
+
+            <tr data-day="1">
+                <td>3-dars</td>
+                <td>Algebra</td>
+                <td>09:40</td>
+                <td>10:25</td>
+            </tr>
+
+            <tr data-day="1">
+                <td>4-dars</td>
+                <td>Ona tili</td>
+                <td>10:35</td>
+                <td>11:20</td>
+            </tr>
+
+            <tr data-day="1">
+                <td>5-dars</td>
+                <td>Fizika</td>
+                <td>11:25</td>
+                <td>12:10</td>
+            </tr>
+
+
+            <!-- Seshanba -->
+
+            <tr data-day="2">
+                <td class="day" rowspan="6">Seshanba</td>
+                <td>1-dars</td>
+                <td>Kimyo</td>
+                <td>08:00</td>
+                <td>08:45</td>
+            </tr>
+
+            <tr data-day="2">
+                <td>2-dars</td>
+                <td>Algebra</td>
+                <td>08:50</td>
+                <td>09:35</td>
+            </tr>
+
+            <tr data-day="2">
+                <td>3-dars</td>
+                <td>O'zbekiston tarixi</td>
+                <td>09:40</td>
+                <td>10:25</td>
+            </tr>
+
+            <tr data-day="2">
+                <td>4-dars</td>
+                <td>Davlat va huquq</td>
+                <td>10:35</td>
+                <td>11:20</td>
+            </tr>
+
+            <tr data-day="2">
+                <td>5-dars</td>
+                <td>CHQBT</td>
+                <td>11:25</td>
+                <td>12:10</td>
+            </tr>
+
+            <tr data-day="2">
+                <td>6-dars</td>
+                <td>Biologiya</td>
+                <td>12:15</td>
+                <td>13:00</td>
+            </tr>
+
+
+            <!-- Chorshanba -->
+
+            <tr data-day="3">
+                <td class="day" rowspan="6">Chorshanba</td>
+                <td>1-dars</td>
+                <td>Geometriya</td>
+                <td>08:00</td>
+                <td>08:45</td>
+            </tr>
+
+            <tr data-day="3">
+                <td>2-dars</td>
+                <td>Rus tili</td>
+                <td>08:50</td>
+                <td>09:35</td>
+            </tr>
+
+            <tr data-day="3">
+                <td>3-dars</td>
+                <td>Tarbiya</td>
+                <td>09:40</td>
+                <td>10:25</td>
+            </tr>
+
+            <tr data-day="3">
+                <td>4-dars</td>
+                <td>CHQBT</td>
+                <td>10:35</td>
+                <td>11:20</td>
+            </tr>
+
+            <tr data-day="3">
+                <td>5-dars</td>
+                <td>Fransuz tili</td>
+                <td>11:25</td>
+                <td>12:10</td>
+            </tr>
+
+            <tr data-day="3">
+                <td>6-dars</td>
+                <td>Adabiyot</td>
+                <td>12:15</td>
+                <td>13:00</td>
+            </tr>
+
+
+            <!-- Payshanba -->
+
+            <tr data-day="4">
+                <td class="day" rowspan="5">Payshanba</td>
+                <td>1-dars</td>
+                <td>Rus tili</td>
+                <td>08:00</td>
+                <td>08:45</td>
+            </tr>
+
+            <tr data-day="4">
+                <td>2-dars</td>
+                <td>Jahon tarixi</td>
+                <td>08:50</td>
+                <td>09:35</td>
+            </tr>
+
+            <tr data-day="4">
+                <td>3-dars</td>
+                <td>Adabiyot</td>
+                <td>09:40</td>
+                <td>10:25</td>
+            </tr>
+
+            <tr data-day="4">
+                <td>4-dars</td>
+                <td>Biologiya</td>
+                <td>10:35</td>
+                <td>11:20</td>
+            </tr>
+
+            <tr data-day="4">
+                <td>5-dars</td>
+                <td>Jismoniy tarbiya</td>
+                <td>11:25</td>
+                <td>12:10</td>
+            </tr>
+
+
+            <!-- Juma -->
+
+            <tr data-day="5">
+                <td class="day" rowspan="6">Juma</td>
+                <td>1-dars</td>
+                <td>Kimyo</td>
+                <td>08:00</td>
+                <td>08:45</td>
+            </tr>
+
+            <tr data-day="5">
+                <td>2-dars</td>
+                <td>Algebra</td>
+                <td>08:50</td>
+                <td>09:35</td>
+            </tr>
+
+            <tr data-day="5">
+                <td>3-dars</td>
+                <td>Informatika</td>
+                <td>09:40</td>
+                <td>10:25</td>
+            </tr>
+
+            <tr data-day="5">
+                <td>4-dars</td>
+                <td>Astronomiya</td>
+                <td>10:35</td>
+                <td>11:20</td>
+            </tr>
+
+            <tr data-day="5">
+                <td>5-dars</td>
+                <td>Geometriya</td>
+                <td>11:25</td>
+                <td>12:10</td>
+            </tr>
+
+            <tr data-day="5">
+                <td>6-dars</td>
+                <td>Tadbirkorlik asoslari</td>
+                <td>12:15</td>
+                <td>13:00</td>
+            </tr>
+
+
+            <!-- Shanba -->
+
+            <tr data-day="6">
+                <td class="day" rowspan="4">Shanba</td>
+                <td>1-dars</td>
+                <td>Fizika</td>
+                <td>08:00</td>
+                <td>08:45</td>
+            </tr>
+
+            <tr data-day="6">
+                <td>2-dars</td>
+                <td>Ona tili</td>
+                <td>08:50</td>
+                <td>09:35</td>
+            </tr>
+
+            <tr data-day="6">
+                <td>3-dars</td>
+                <td>Fransuz tili</td>
+                <td>09:40</td>
+                <td>10:25</td>
+            </tr>
+
+            <tr data-day="6">
+                <td>4-dars</td>
+                <td>Jismoniy tarbiya</td>
+                <td>10:35</td>
+                <td>11:20</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    let today = new Date().getDay();
+
+    let dayNames = {
+        1: "Dushanba",
+        2: "Seshanba",
+        3: "Chorshanba",
+        4: "Payshanba",
+        5: "Juma",
+        6: "Shanba",
+        0: "Yakshanba"
+    };
+
+
+    let todayName = dayNames[today];
+
+    document.getElementById("todayTitle").textContent =
+        "Bugungi darslar - " + todayName;
+
+
+    let todayLessons =
+        document.getElementById("todayLessons");
+
+    let rows =
+        document.querySelectorAll(".schedule tr[data-day]");
+
+    let hasLessons = false;
+
+
+    rows.forEach(function(row) {
+
+        let rowDay =
+            Number(row.getAttribute("data-day"));
+
+
+        if (rowDay === today) {
+
+            hasLessons = true;
+
+            row.classList.add("today-row");
+
+
+            let cells =
+                row.querySelectorAll("td");
+
+
+            let lesson =
+                cells[0].textContent;
+
+            let subject =
+                cells[1].textContent;
+
+            let start =
+                cells[2].textContent;
+
+            let end =
+                cells[3].textContent;
+
+
+            todayLessons.innerHTML +=
+                '<div class="today-lesson">' +
+                '<strong>' + lesson + '</strong>' +
+                ' - ' + subject +
+                ' | ' + start + ' - ' + end +
+                '</div>';
+
+        }
+
+    });
+
+
+    if (!hasLessons) {
+
+        todayLessons.innerHTML =
+            "<p>Bugun dars yo'q.</p>";
+
+    }
+
+
+    function timeToMinutes(time) {
+
+        let parts = time.split(":");
+
+        return (
+            Number(parts[0]) * 60 +
+            Number(parts[1])
+        );
+
+    }
+
+
+    function formatTime(seconds) {
+
+        let hours =
+            Math.floor(seconds / 3600);
+
+        let minutes =
+            Math.floor((seconds % 3600) / 60);
+
+        let secs =
+            seconds % 60;
+
+
+        let result = "";
+
+
+        if (hours > 0) {
+
+            result +=
+                hours + " soat ";
+
+        }
+
+
+        if (minutes > 0 || hours > 0) {
+
+            result +=
+                minutes + " daqiqa ";
+
+        }
+
+
+        result +=
+            secs + " soniya";
+
+
+        return result;
+
+    }
+
+
+    function checkCurrentLesson() {
+
+        let now = new Date();
+
+        let currentSeconds =
+            now.getHours() * 3600 +
+            now.getMinutes() * 60 +
+            now.getSeconds();
+
+
+        let todayRows =
+            document.querySelectorAll(
+                '.schedule tr[data-day="' + today + '"]'
+            );
+
+
+        let currentBox =
+            document.getElementById("currentLesson");
+
+
+        let currentLessonFound = false;
+
+        let nextLessonFound = false;
+
+
+        todayRows.forEach(function(row) {
+
+            let cells =
+                row.querySelectorAll("td");
+
+
+            let lesson =
+                cells[0].textContent;
+
+            let subject =
+                cells[1].textContent;
+
+            let start =
+                cells[2].textContent;
+
+            let end =
+                cells[3].textContent;
+
+
+            let startSeconds =
+                timeToMinutes(start) * 60;
+
+            let endSeconds =
+                timeToMinutes(end) * 60;
+
+
+            if (
+                currentSeconds >= startSeconds &&
+                currentSeconds < endSeconds
+            ) {
+
+                let remaining =
+                    endSeconds - currentSeconds;
+
+
+                currentBox.innerHTML =
+                    "<h2>Hozirgi dars</h2>" +
+
+                    "<p><strong>" +
+                    lesson +
+                    " - " +
+                    subject +
+                    "</strong></p>" +
+
+                    "<p>" +
+                    start +
+                    " - " +
+                    end +
+                    "</p>" +
+
+                    "<p class='countdown'>" +
+                    "Dars tugashiga: " +
+                    formatTime(remaining) +
+                    "</p>";
+
+
+                currentLessonFound = true;
+
+            }
+
+
+            if (
+                !currentLessonFound &&
+                !nextLessonFound &&
+                currentSeconds < startSeconds
+            ) {
+
+                let remaining =
+                    startSeconds - currentSeconds;
+
+
+                currentBox.innerHTML =
+                    "<h2>Keyingi dars</h2>" +
+
+                    "<p><strong>" +
+                    lesson +
+                    " - " +
+                    subject +
+                    "</strong></p>" +
+
+                    "<p>" +
+                    start +
+                    " - " +
+                    end +
+                    "</p>" +
+
+                    "<p class='countdown'>" +
+                    "Dars boshlanishiga: " +
+                    formatTime(remaining) +
+                    "</p>";
+
+
+                nextLessonFound = true;
+
+            }
+
+        });
+
+
+        if (
+            !currentLessonFound &&
+            !nextLessonFound
+        ) {
+
+            currentBox.innerHTML =
+                "<h2>Dars vaqti</h2>" +
+
+                "<p>Bugungi darslar tugagan.</p>";
+
+        }
+
+    }
+
+
+    checkCurrentLesson();
+
+
+    setInterval(
+        checkCurrentLesson,
+        1000
+    );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vazifalar</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .task-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .task-card {
+            background-color: white;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .task-card.completed {
+            opacity: 0.65;
+        }
+
+        .task-card.completed .task-text {
+            text-decoration: line-through;
+        }
+
+        .task-subject {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .task-date {
+            color: #666;
+            margin: 8px 0;
+        }
+
+        select {
+            width: 100%;
+            max-width: 620px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .task-buttons {
+            margin-top: 12px;
+        }
+
+        .task-buttons button {
+            margin-right: 5px;
+        }
+
+        .empty {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>Vazifalar</h1>
+
+    <p>Bugungi va kelajakdagi vazifalarim</p>
+
+    <nav>
+        <a href="index.html">Bosh sahifa</a>
+        <a href="kundalik.html">Kundalik</a>
+        <a href="zametka.html">Zametkalar</a>
+        <a href="vazifalar.html">Vazifalar</a>
+        <a href="maqsadlar.html">Maqsadlar</a>
+        <a href="vaqt.html">Vaqt</a>
+        <a href="saytlar.html">Foydali saytlar</a>
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="task-form">
+
+        <h2>Yangi vazifa</h2>
+
+
+        <label>Fan:</label>
+
+        <br>
+
+        <select id="subject">
+
+            <option value="">Fanni tanlang</option>
+
+            <option>Matematika</option>
+            <option>Algebra</option>
+            <option>Geometriya</option>
+            <option>Informatika</option>
+            <option>Ona tili</option>
+            <option>Adabiyot</option>
+            <option>Ingliz tili</option>
+            <option>Rus tili</option>
+            <option>Fransuz tili</option>
+            <option>Fizika</option>
+            <option>Kimyo</option>
+            <option>Biologiya</option>
+            <option>Tarix</option>
+            <option>O'zbekiston tarixi</option>
+            <option>Jahon tarixi</option>
+            <option>Tarbiya</option>
+            <option>Davlat va huquq</option>
+            <option>CHQBT</option>
+            <option>Jismoniy tarbiya</option>
+            <option>Astronomiya</option>
+            <option>Tadbirkorlik asoslari</option>
+
+        </select>
+
+
+        <br><br>
+
+
+        <label>Vazifa:</label>
+
+        <br>
+
+        <input
+            id="taskInput"
+            type="text"
+            placeholder="Masalan: 67 va 68-masalalarni yechish"
+        >
+
+
+        <br><br>
+
+
+        <label>Muddat:</label>
+
+        <br>
+
+        <input
+            id="taskDate"
+            type="date"
+        >
+
+
+        <br><br>
+
+
+        <button onclick="addTask()">
+            Vazifa qo'shish
+        </button>
+
+    </div>
+
+
+    <h2>Mening vazifalarim</h2>
+
+
+    <div id="tasks"></div>
+
+</div>
+
+
+<script>
+
+    let tasks =
+        JSON.parse(
+            localStorage.getItem("tasks")
+        ) || [];
+
+
+    function addTask() {
+
+        let subject =
+            document.getElementById(
+                "subject"
+            ).value;
+
+
+        let taskInput =
+            document.getElementById(
+                "taskInput"
+            );
+
+
+        let taskText =
+            taskInput.value;
+
+
+        let taskDate =
+            document.getElementById(
+                "taskDate"
+            ).value;
+
+
+        if (subject === "") {
+
+            alert("Fanni tanlang!");
+
+            return;
+
+        }
+
+
+        if (taskText === "") {
+
+            alert("Vazifani yozing!");
+
+            return;
+
+        }
+
+
+        if (taskDate === "") {
+
+            alert("Muddatni tanlang!");
+
+            return;
+
+        }
+
+
+        tasks.push({
+
+            subject: subject,
+
+            text: taskText,
+
+            date: taskDate,
+
+            completed: false
+
+        });
+
+
+        localStorage.setItem(
+            "tasks",
+            JSON.stringify(tasks)
+        );
+
+
+        document.getElementById(
+            "subject"
+        ).value = "";
+
+
+        taskInput.value = "";
+
+
+        document.getElementById(
+            "taskDate"
+        ).value = "";
+
+
+        showTasks();
+
+    }
+
+
+    function completeTask(index) {
+
+        tasks[index].completed =
+            !tasks[index].completed;
+
+
+        localStorage.setItem(
+            "tasks",
+            JSON.stringify(tasks)
+        );
+
+
+        showTasks();
+
+    }
+
+
+    function deleteTask(index) {
+
+        tasks.splice(index, 1);
+
+
+        localStorage.setItem(
+            "tasks",
+            JSON.stringify(tasks)
+        );
+
+
+        showTasks();
+
+    }
+
+
+    function showTasks() {
+
+        let tasksDiv =
+            document.getElementById(
+                "tasks"
+            );
+
+
+        tasksDiv.innerHTML = "";
+
+
+        if (tasks.length === 0) {
+
+            tasksDiv.innerHTML =
+                "<div class='empty'>" +
+                "<p>Hozircha vazifalar yo'q.</p>" +
+                "</div>";
+
+            return;
+
+        }
+
+
+        tasks.forEach(
+            function(task, index) {
+
+
+                let status =
+                    task.completed
+                    ? "Bajarildi"
+                    : "Jarayonda";
+
+
+                let cardClass =
+                    task.completed
+                    ? "task-card completed"
+                    : "task-card";
+
+
+                tasksDiv.innerHTML +=
+
+                    "<div class='" +
+                    cardClass +
+                    "'>" +
+
+                    "<div class='task-subject'>" +
+                    task.subject +
+                    "</div>" +
+
+                    "<p class='task-text'>" +
+                    task.text +
+                    "</p>" +
+
+                    "<p class='task-date'>" +
+                    "Muddat: " +
+                    task.date +
+                    "</p>" +
+
+                    "<p>" +
+                    "Holat: <strong>" +
+                    status +
+                    "</strong>" +
+                    "</p>" +
+
+                    "<div class='task-buttons'>" +
+
+                    "<button onclick='completeTask(" +
+                    index +
+                    ")'>" +
+
+                    (
+                        task.completed
+                        ? "Qayta ochish"
+                        : "Bajarildi"
+                    ) +
+
+                    "</button>" +
+
+                    "<button onclick='deleteTask(" +
+                    index +
+                    ")'>" +
+
+                    "O'chirish" +
+
+                    "</button>" +
+
+                    "</div>" +
+
+                    "</div>";
+
+            }
+        );
+
+    }
+
+
+    showTasks();
+
+</script>
+
+</body>
+</html>

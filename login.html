@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kirish - Student Platform</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            background: #0f1115;
+            color: #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            width: 90%;
+            max-width: 420px;
+
+            background: #181b21;
+
+            border: 1px solid #292d36;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.4);
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #2563eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 36px;
+            font-weight: bold;
+
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+
+            color: white;
+
+            margin: 0 0 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #9ca3af;
+
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+
+            margin-top: 15px;
+            margin-bottom: 6px;
+
+            color: #d1d5db;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            background: #111318;
+
+            color: white;
+
+            border: 1px solid #363b46;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 13px;
+
+            background: #2563eb;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #message {
+            text-align: center;
+
+            margin-top: 15px;
+
+            min-height: 20px;
+        }
+
+        .register-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            color: #60a5fa;
+
+            text-decoration: none;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+    <div class="avatar">
+        A
+    </div>
+
+
+    <h1>
+        Xush kelibsiz
+    </h1>
+
+
+    <p class="subtitle">
+        Abdulloh's Student Platform
+    </p>
+
+
+    <label>
+        Login
+    </label>
+
+    <input
+        type="text"
+        id="username"
+        placeholder="Loginingizni kiriting"
+    >
+
+
+    <label>
+        Parol
+    </label>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Parolingizni kiriting"
+    >
+
+
+    <button onclick="login()">
+        Kirish
+    </button>
+
+
+    <div id="message"></div>
+
+
+    <a
+        href="register.html"
+        class="register-link"
+    >
+        Akkauntingiz yo'qmi? Ro'yxatdan o'tish
+    </a>
+
+</div>
+
+
+<script>
+
+function login() {
+
+    const username =
+        document.getElementById(
+            "username"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "password"
+        ).value;
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    const savedUser =
+        localStorage.getItem("user");
+
+
+    if (!savedUser) {
+
+        message.textContent =
+            "Avval akkaunt yarating.";
+
+        message.style.color =
+            "#f87171";
+
+        return;
+
+    }
+
+
+    const user =
+        JSON.parse(savedUser);
+
+
+    if (
+        username === user.username &&
+        password === user.password
+    ) {
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
+        );
+
+
+        localStorage.setItem(
+            "currentUser",
+            user.name
+        );
+
+
+        message.textContent =
+            "Kirish muvaffaqiyatli!";
+
+        message.style.color =
+            "#4ade80";
+
+
+        setTimeout(
+            function() {
+
+                window.location.href =
+                    "index.html";
+
+            },
+            700
+        );
+
+    } else {
+
+        message.textContent =
+            "Login yoki parol noto'g'ri.";
+
+        message.style.color =
+            "#f87171";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>

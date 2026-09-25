@@ -1,0 +1,281 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f1115;
+    color: #e5e7eb;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #09090b, #171a21);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 1px solid #292d36;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 8px 0 18px;
+    color: #9ca3af;
+}
+
+/* NAV */
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+nav a {
+    color: #d1d5db;
+    text-decoration: none;
+    padding: 9px 13px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* CARDS */
+
+.card {
+    background-color: #181b21;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    border: 1px solid #292d36;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+/* PROFILE */
+
+.profile {
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.profile h2 {
+    font-size: 32px;
+    margin: 5px 0;
+    color: white;
+}
+
+.profile p {
+    color: #9ca3af;
+    font-size: 17px;
+}
+
+/* MENU */
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.menu-card {
+    background-color: #181b21;
+    padding: 25px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #e5e7eb;
+    border: 1px solid #292d36;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    transition: 0.2s;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    border-color: #2563eb;
+    background-color: #1c212b;
+}
+
+.menu-card h3 {
+    margin-top: 0;
+    font-size: 21px;
+    color: #60a5fa;
+}
+
+.menu-card p {
+    color: #9ca3af;
+}
+
+/* BUTTON */
+
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+/* INPUT */
+
+input,
+textarea,
+select {
+    width: 100%;
+    max-width: 620px;
+    padding: 11px 12px;
+    margin-top: 5px;
+    border: 1px solid #363b46;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #111318;
+    color: #e5e7eb;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* LINKS */
+
+a {
+    color: #60a5fa;
+}
+
+/* TABLE */
+
+.schedule {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #181b21;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.schedule th,
+.schedule td {
+    border: 1px solid #292d36;
+    padding: 12px;
+    text-align: center;
+}
+
+.schedule th {
+    background-color: #111318;
+    color: white;
+}
+
+.schedule tr:hover {
+    background-color: #20242c;
+}
+
+.today-row {
+    background-color: #172554;
+}
+
+/* HEADINGS */
+
+h2 {
+    color: #f3f4f6;
+}
+
+h3 {
+    color: #60a5fa;
+}
+
+/* HR */
+
+hr {
+    border: none;
+    border-top: 1px solid #292d36;
+    margin: 25px 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px 12px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    nav {
+        gap: 4px;
+    }
+
+    nav a {
+        font-size: 13px;
+        padding: 7px 9px;
+    }
+
+    .container {
+        margin: 15px auto;
+        padding: 0 12px;
+    }
+
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .profile {
+        padding: 25px 15px;
+    }
+
+    .profile h2 {
+        font-size: 27px;
+    }
+
+    .schedule {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    .schedule th,
+    .schedule td {
+        padding: 8px;
+    }
+
+    button {
+        padding: 9px 12px;
+    }
+}
