@@ -278,4 +278,98 @@ hr {
     button {
         padding: 9px 12px;
     }
+}  
+/* ================================
+   DARK MODE - BARCHA SAHIFALAR
+================================ */
+
+html,
+body {
+    background: #0f1115 !important;
+    color: #e5e7eb !important;
+}
+
+.container,
+main,
+section {
+    background: transparent !important;
+}
+
+.card,
+.lesson-box,
+.task-card,
+.goal-card,
+.note-card,
+.menu-card,
+.stat-card,
+.schedule-container {
+    background: #181b21 !important;
+    color: #e5e7eb !important;
+    border-color: #292d36 !important;
+}
+
+.card *,
+.lesson-box *,
+.task-card *,
+.goal-card *,
+.note-card *,
+.menu-card *,
+.stat-card *,
+.schedule-container * {
+    color: inherit;
+}
+
+/* Input va textarea */
+
+input,
+textarea,
+select {
+    background: #111318 !important;
+    color: #e5e7eb !important;
+    border: 1px solid #363b46 !important;
+}
+
+/* Jadval */
+
+table {
+    background: #181b21 !important;
+    color: #e5e7eb !important;
+}
+
+th {
+    background: #111827 !important;
+    color: #60a5fa !important;
+}
+
+td {
+    background: #181b21 !important;
+    color: #e5e7eb !important;
+    border-color: #292d36 !important;
+}
+
+/* Vazifalar */
+
+.task,
+.task-item,
+.task-list,
+.todo-item {
+    background: #181b21 !important;
+    color: #e5e7eb !important;
+    border-color: #292d36 !important;
+}
+
+/* Zametkalar */
+
+textarea::placeholder,
+input::placeholder {
+    color: #6b7280 !important;
+}
+
+/* Oq bloklarni yo'qotish */
+
+.white,
+.white-box,
+.bg-white {
+    background: #181b21 !important;
+    color: #e5e7eb !important;
 }
